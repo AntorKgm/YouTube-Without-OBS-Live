@@ -79,9 +79,12 @@ if not exist "%AUD_DIR%" mkdir "%AUD_DIR%"
 
 REM ================================================================
 REM  [F-01] WINDOWS OPTIMIZATION - Background Services বন্ধ
-REM  Admin হিসেবে চললে RAM বাঁচানো হয়, না হলে warning দেয়
+REM  Admin check: net session এর বদলে whoami ব্যবহার করা হচ্ছে
+REM  কারণ: net session কিছু Windows-এ UAC error দিয়ে window বন্ধ করে
+REM  whoami /groups এ "S-1-16-12288" থাকলে Admin নিশ্চিত
 REM ================================================================
-net session >nul 2>&1
+set "ADMIN_OK=0"
+whoami /groups 2>nul | find "S-1-16-12288" >nul 2>&1
 if not errorlevel 1 (
     REM -- Admin আছে, optimize করো
     REM SearchIndexer: disk/CPU ব্যবহার করে, streaming-এ দরকার নেই
@@ -95,8 +98,6 @@ if not errorlevel 1 (
     REM [F-02] High Performance power plan - CPU throttle বন্ধ
     powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c >nul 2>&1
     set "ADMIN_OK=1"
-) else (
-    set "ADMIN_OK=0"
 )
 
 REM ==================== CHANNEL NAME ====================
