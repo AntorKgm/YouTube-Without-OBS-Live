@@ -300,7 +300,7 @@ REM -- Resolution menu (orientation অনুযায়ী)
 set "RNAME="
 if "!ORIENT!"=="16x9" (
     echo  ===== Select Resolution =====
-    echo   [1]  720p   (1280x720 )  -- 4GB RAM-এ BEST ^(5-7 streams^)
+    echo   [1]  720p   (1280x720 )  -- BEST for 4GB RAM (5-7 streams)
     echo   [2]  1080p  (1920x1080) -- Max 3-4 streams on 4GB RAM
     echo   [3]  2K     (2560x1440)
     echo   [4]  4K     (3840x2160)
@@ -313,7 +313,7 @@ if "!ORIENT!"=="16x9" (
     if "!RC!"=="4" ( set "W=3840"&set "H=2160"&set "VBIT=8000k"&set "MAXR=8000k"&set "BUF=16000k"&set "RNAME=4K"     )
 ) else (
     echo  ===== Select Resolution (Vertical) =====
-    echo   [1]  720p  Vertical  ( 720x1280 )  -- 4GB RAM-এ BEST
+    echo   [1]  720p  Vertical  ( 720x1280 )  -- BEST for 4GB RAM
     echo   [2]  1080p Vertical  (1080x1920)
     echo.
     set "RC="
@@ -508,7 +508,7 @@ if "!SKEY!"=="" (
 )
 echo.
 echo  ===== Select Resolution =====
-echo   [1]  720p   (1280x720 )  -- 4GB RAM-এ BEST ^(7 streams^)
+echo   [1]  720p   (1280x720 )  -- BEST for 4GB RAM (7 streams)
 echo   [2]  1080p  (1920x1080)
 echo.
 set "RNAME="
